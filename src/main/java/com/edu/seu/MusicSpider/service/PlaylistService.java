@@ -9,21 +9,24 @@ import java.net.URL;
 
 import org.apache.log4j.Logger;
 
-import com.edu.seu.MusicSpider.SpiderUtiils.SpiderUtils;
+import com.edu.seu.MusicSpider.SpiderUtiils.LogErrors;
+import com.edu.seu.MusicSpider.SpiderUtiils.RestClient;
 
 public class PlaylistService {
   public static final String GET_URL= "http://music.163.com/";
   public int statusCode;
   private static final Logger LOGGER = Logger.getLogger(PlaylistService.class);
 
-  //获取首页歌单列表链接 
-  public String GetFirstPage(){
+  
+ /**
+ * @return 获取种子链接页面源码
+ */
+public String GetFirstPage(){
       HttpURLConnection conn = null;
       BufferedReader rd = null ;
       StringBuilder sb = new StringBuilder ();
       String line = null ;
       String FirstPageResponse = null;
-      System.out.println("here");
       try {
           conn = (HttpURLConnection) new URL(GET_URL).openConnection();
           conn.setRequestMethod("GET");
@@ -34,18 +37,17 @@ public class PlaylistService {
           conn.setConnectTimeout(20000);
           conn.connect();
           statusCode = conn.getResponseCode();
-          System.out.println(statusCode);
-//          if (200 == statusCode) {
+          if (200 == statusCode) {
         	  rd  = new BufferedReader( new InputStreamReader(conn.getInputStream(), "UTF-8"));
               while ((line = rd.readLine()) != null ) {
                   sb.append(line);
               }
               FirstPageResponse = sb.toString();
-//		}else {
-//			System.out.println("nio");
-//			LOGGER.error("请求首页错误，"+"错误类型：  "+statusCode);
-//			SpiderUtils.loggerErrors(GET_URL, statusCode);
-//		}          
+		}else {
+			System.out.println("nio");
+			LOGGER.error("请求首页错误，"+"错误类型：  "+statusCode);
+			LogErrors.loggerErrors(GET_URL, statusCode);
+		}          
       } catch (MalformedURLException e) {
           e.printStackTrace();
       } catch (IOException e) {
@@ -65,5 +67,17 @@ public class PlaylistService {
       LOGGER.debug("请求成功");
       return FirstPageResponse;
   }
+
+     public String GetPlayListDetail(String path) {
+    	String response;
+    	RestClient restClient = new RestClient();
+    	String url = GET_URL+path.substring(1);
+    	System.out.println(url);
+    	response = restClient.doGet(url);
+    	System.out.println(response);
+		return response;
+		
+	}
+    
   
 }
