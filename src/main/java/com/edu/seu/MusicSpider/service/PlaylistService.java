@@ -12,6 +12,12 @@ import org.apache.log4j.Logger;
 import com.edu.seu.MusicSpider.SpiderUtiils.LogErrors;
 import com.edu.seu.MusicSpider.SpiderUtiils.RestClient;
 
+/**
+ * @creat time 2017年4月5日 下午11:36:08
+ * @author hao zhang
+ * @version 1.0
+ * @comment 
+ */
 public class PlaylistService {
   public static final String GET_URL= "http://music.163.com/";
   public int statusCode;
@@ -67,16 +73,19 @@ public String GetFirstPage(){
       LOGGER.debug("请求成功");
       return FirstPageResponse;
   }
+     
 
-     public String GetPlayListDetail(String path) {
+
+     /**
+     * @param path 请求路径
+     * @return 歌单列表详情页源码
+     */
+    public String GetPlayListDetail(String path) {
     	String response;
     	RestClient restClient = new RestClient();
     	String url = GET_URL+path.substring(1);
-    	System.out.println(url);
     	response = restClient.doGet(url);
-    	System.out.println(response);
-		return response;
-		
+		return response;		
 	}
     
   

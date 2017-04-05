@@ -37,5 +37,8 @@ public class App
         
         //获取歌单列表页源码
         responsePlaylistSourceCode = playlistService.GetPlayListDetail(href);
+        
+        //获取歌单所有类型信息
+        regularExp.findPlayListDetail(responsePlaylistSourceCode);
     }
 }
