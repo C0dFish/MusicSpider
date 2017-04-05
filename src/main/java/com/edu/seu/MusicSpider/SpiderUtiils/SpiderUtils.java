@@ -1,4 +1,4 @@
-package com.edu.seu.MusicSpider;
+package com.edu.seu.MusicSpider.SpiderUtiils;
 
 import java.io.File;
 import java.io.FileWriter;

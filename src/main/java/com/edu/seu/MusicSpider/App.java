@@ -9,8 +9,10 @@ import com.edu.seu.MusicSpider.service.PlaylistService;
 public class App 
 {
     public static void main( String[] args )
-    {
+    {   
+    	String responseFirstPageSourceCode ;
         PlaylistService playlistService = new PlaylistService();
-        playlistService.GetFirstPage();
+        responseFirstPageSourceCode = playlistService.GetFirstPage();
+        System.out.println(responseFirstPageSourceCode);
     }
 }

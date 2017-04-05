@@ -9,7 +9,7 @@ import java.net.URL;
 
 import org.apache.log4j.Logger;
 
-import com.edu.seu.MusicSpider.SpiderUtils;
+import com.edu.seu.MusicSpider.SpiderUtiils.SpiderUtils;
 
 public class PlaylistService {
   public static final String GET_URL= "http://music.163.com/";
@@ -23,6 +23,7 @@ public class PlaylistService {
       StringBuilder sb = new StringBuilder ();
       String line = null ;
       String FirstPageResponse = null;
+      System.out.println("here");
       try {
           conn = (HttpURLConnection) new URL(GET_URL).openConnection();
           conn.setRequestMethod("GET");
@@ -33,16 +34,18 @@ public class PlaylistService {
           conn.setConnectTimeout(20000);
           conn.connect();
           statusCode = conn.getResponseCode();
-          if (200 == statusCode) {
+          System.out.println(statusCode);
+//          if (200 == statusCode) {
         	  rd  = new BufferedReader( new InputStreamReader(conn.getInputStream(), "UTF-8"));
               while ((line = rd.readLine()) != null ) {
                   sb.append(line);
               }
               FirstPageResponse = sb.toString();
-		}else {
-			LOGGER.error("请求首页错误，"+"错误类型：  "+statusCode);
-			SpiderUtils.loggerErrors(GET_URL, statusCode);
-		}          
+//		}else {
+//			System.out.println("nio");
+//			LOGGER.error("请求首页错误，"+"错误类型：  "+statusCode);
+//			SpiderUtils.loggerErrors(GET_URL, statusCode);
+//		}          
       } catch (MalformedURLException e) {
           e.printStackTrace();
       } catch (IOException e) {
