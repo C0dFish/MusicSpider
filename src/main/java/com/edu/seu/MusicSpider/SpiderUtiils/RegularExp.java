@@ -1,6 +1,7 @@
 package com.edu.seu.MusicSpider.SpiderUtiils;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +23,7 @@ public class RegularExp {
    /**
  * @param txt 待匹配源码
  * @return 匹配结果
- * @
+ * @comment 查找歌单详情页匹配
  */
 public String  findPlayListLink(String txt) {
 	   
@@ -45,32 +46,83 @@ public String  findPlayListLink(String txt) {
 /**
 * @param txt 待匹配源码
 * @return 匹配结果
+* @comment 查找歌单分类匹配
 */
-   public HashMap<String, String> findPlayListDetail(String txt) {
+   public HashMap<String, String> findPlayListType(String txt) {
+    HashMap<String, String> songStyle= new HashMap<String, String>();
 	Document doc = Jsoup.parse(txt);
 	Elements body = doc.getElementsByClass("bd");
 	Document moduleDoc = Jsoup.parse(body.toString());
 	Elements fcb = moduleDoc.select(".f-cb");
+	
+	
 	for (Element fcbli : fcb){
-		HashMap<String, String> songStyle= new HashMap<String, String>();
         Document fcbDoc = Jsoup.parse(fcbli.toString());
         Elements dd = fcbDoc.getElementsByTag("dd");
-     
+        
         for (Element ddli : dd) {
-        	Document ddDoc = Jsoup.parse(dd.toString());
-        	Elements aTag = ddDoc.getElementsByClass("s-fc1");
-//        	for (Element aLi : aTag) {
-        		String link = aTag.attr("href");
-        		String catlog = aTag.attr("data-cat");
-        		System.out.println("链接："+link+"    分类："+catlog);
-			}
-        	         
-//		}
+        	Elements links = ddli.getElementsByTag("a");
+        	
+        	for (Element link : links) {
+        		  String linkHref = link.attr("href");
+        		  String linkText = link.text();
+        		  songStyle.put(linkText, linkHref);
+        		}       	         
+		}
 
 
     }
-	return null;
+	return songStyle;
 	
 }
+   
+   
+   /**
+ * @param txt 歌单详情页源码
+ * @return  歌单列表
+ * @comment 解析歌单详情页歌曲 
+ */
+public HashMap<String,String> findPlayListDetail(String txt){
+	HashMap<String, String> playList = new HashMap<String, String>();	
+	Document doc = Jsoup.parse(txt);
+	Elements body = doc.getElementsByTag("ul");
+	
+	for (Element element : body) {
+		Document fcbDoc = Jsoup.parse(element.toString());
+		Elements li = fcbDoc.getElementsByTag("li");
+		for (Element lili : li) {
+			Elements liliDetail = lili.getElementsByTag("a");
+			String linkHref = liliDetail.get(0).attr("href");
+			String linkText = liliDetail.get(0).attr("title");
+			playList.put(linkText, linkHref);
+		}
+	} 
+	return playList;
+	   
+   }
+
+/**
+* @param txt 歌单列表页源码
+* @return  歌单链接
+* @comment 解析歌单列表页歌曲列表
+*/
+public HashMap<String,String> findSongListDetail(String txt){
+	HashMap<String, String> playList = new HashMap<String, String>();	
+	Document doc = Jsoup.parse(txt);
+	Elements body = doc.getElementsByTag("ul");
+	Element element = body.get(0);
+	Document fcbDoc = Jsoup.parse(element.toString());
+	Elements li = fcbDoc.getElementsByTag("li");
+	
+	 for (Element lili : li) {
+			Elements liliDetail = lili.getElementsByTag("a");
+			String linkHref = liliDetail.attr("href");
+			String linkText = liliDetail.text();
+			playList.put(linkText, linkHref);
+		}
+	
+	return playList;
+	   
+   }
 	
 }

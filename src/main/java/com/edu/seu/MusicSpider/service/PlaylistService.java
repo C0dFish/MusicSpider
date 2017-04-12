@@ -78,9 +78,31 @@ public String GetFirstPage(){
 
      /**
      * @param path 请求路径
-     * @return 歌单列表详情页源码
+     * @return 歌单列表风格详情页源码
      */
     public String GetPlayListDetail(String path) {
+    	String response;
+    	RestClient restClient = new RestClient();
+    	String url = GET_URL+path.substring(1);
+    	response = restClient.doGet(url);
+		return response;		
+	}
+    
+    
+    /**
+     * @param path 请求路径
+     * @return 歌单列表页源码
+     */
+    public String GetPlayListSourceCode(String path) {
+    	String response;
+    	RestClient restClient = new RestClient();
+    	String url = GET_URL+path.substring(1);
+    	response = restClient.doGet(url);
+		return response;		
+	}
+    
+    
+    public String GetPlayListDetailSourceCode(String path) {
     	String response;
     	RestClient restClient = new RestClient();
     	String url = GET_URL+path.substring(1);
