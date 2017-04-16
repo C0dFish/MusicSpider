@@ -33,8 +33,8 @@ public class RestClient {
 	            conn.setDoOutput(false);
 	            conn.setDoInput(true);
 	            //设置连接超时时间和读取超时时间
-	            conn.setConnectTimeout(10000);
-	            conn.setReadTimeout(10000);
+	            conn.setConnectTimeout(100000);
+	            conn.setReadTimeout(200000);
 	            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 	            //连接服务器  
 	            conn.connect();  
@@ -45,7 +45,7 @@ public class RestClient {
 	                result.append(line);
 	            }
 	        } catch (Exception e) {
-	            e.printStackTrace();
+	            System.out.println("页面访问超时，启动超时处理线程。。。");
 	        }
 	        //关闭输入流
 	        finally{

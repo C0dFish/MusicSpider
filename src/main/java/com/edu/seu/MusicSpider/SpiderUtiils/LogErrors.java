@@ -13,7 +13,7 @@ import java.net.URL;
  * @comment 控制台输出错误日志，并归档至文本日志中
  */
 public class LogErrors {
-	static File file = new File("D:\\请求日志.txt");
+	static File file = new File("D:\\logs\\请求错误日志.txt");
 	/**
 	 * @param URL 错误请求链接
 	 * @param statusCode 错误请求码
@@ -21,7 +21,7 @@ public class LogErrors {
 	public static void loggerErrors(String URL,int statusCode) {
 		try {
 			FileWriter fileWriter = new FileWriter(file);
-			fileWriter.append("请求网页错误，错误码：  "+statusCode+"  请求网页地址："+URL.toString());
+			fileWriter.append("请求网页错误，错误码：  "+statusCode+"  请求网页地址："+URL.toString()+"\r\n");
 			fileWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();

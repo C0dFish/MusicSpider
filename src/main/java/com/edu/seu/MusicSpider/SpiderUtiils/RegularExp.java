@@ -12,6 +12,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.edu.seu.MusicSpider.model.Song;
+
 /**
  * @creat time 2017年4月5日 下午11:38:32
  * @author hao zhang
@@ -19,6 +21,8 @@ import org.jsoup.select.Elements;
  * @comment 正则匹配工具类
  */
 public class RegularExp {
+	
+public static final String GET_URL= "http://music.163.com/";
 	
    /**
  * @param txt 待匹配源码
@@ -124,5 +128,27 @@ public HashMap<String,String> findSongListDetail(String txt){
 	return playList;
 	   
    }
+
+
+/**
+ * @param response 歌单详情页源码
+ * @return 歌曲信息
+ * @comment 获取歌曲信息
+ */
+public Song findSongDetail(String response,String subURL,String name) {
+	Song song = new Song();
+	Document doc = Jsoup.parse(response);
+	Elements body = doc.getElementsByTag("p");
+	String singer = body.get(0).text().substring(3);
+	String album = body.get(1).text().substring(5);
+	String linkHref = body.get(1).getElementsByTag("a").attr("href");
+	song.setSinger(singer);
+	song.setAlbum(album);
+	song.setAlbumLink(GET_URL+linkHref);
+	song.setUrl(GET_URL+subURL.substring(1));
+	song.setName(name);
+	return song;
+	
+}
 	
 }

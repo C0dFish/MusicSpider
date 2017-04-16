@@ -102,7 +102,24 @@ public String GetFirstPage(){
 	}
     
     
+    /**
+     * @param path
+     * @return 歌曲列表页源码
+     */
     public String GetPlayListDetailSourceCode(String path) {
+    	String response;
+    	RestClient restClient = new RestClient();
+    	String url = GET_URL+path.substring(1);
+    	response = restClient.doGet(url);
+		return response;		
+	}
+    
+    
+    /**
+     * @param path
+     * @return 歌曲详情页源码
+     */
+    public String GetSongDetailSourceCode(String path) {
     	String response;
     	RestClient restClient = new RestClient();
     	String url = GET_URL+path.substring(1);

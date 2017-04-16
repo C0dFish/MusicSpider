@@ -1,12 +1,21 @@
 package com.edu.seu.MusicSpider.model;
 
 public class Song {
-	public String name;
-	   public String singer;
-	   public String lyric;
-	   public String album;
-	   public String url;
-	   public int comment;
+	public String name = null;
+	   public String singer = null;
+	   public String lyric = null;
+	   public String album = null;
+	   public String albumLink = null;
+	   public String url = null;
+	   public int comment = 0;
+	   
+   public String getAlbumLink() {
+		return albumLink;
+	}
+   public void setAlbumLink(String albumLink) {
+		this.albumLink = albumLink;
+	}
+	
    public String getName() {
 		return name;
 	}
