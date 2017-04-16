@@ -27,8 +27,7 @@ public class DBService {
 				+"(name,singer,lyric,album,albumLink,url,comment) "
 				+"values("
 				+" ?,?,?,?,?,?,?"
-				+song.getName()+","+song.getSinger()+","+song.getLyric()+","+song.getAlbum()+","
-				+song.getAlbumLink()+","+song.getUrl()+","+song.getComment()+")";
+				+")";
 
 		//预编译sql语句
 		try {
