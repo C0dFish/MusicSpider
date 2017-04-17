@@ -7,10 +7,12 @@
 package com.edu.seu.MusicSpider.service;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +26,9 @@ public class DBService {
 	//插入一条数据到数据库
 	public void addGoddess(Song song){
 		String sql="insert into song_info"
-				+"(name,singer,lyric,album,albumLink,url,comment) "
+				+"(name,singer,lyric,album,albumLink,url,comment,add_time,update_time) "
 				+"values("
-				+" ?,?,?,?,?,?,?"
+				+" ?,?,?,?,?,?,?,?,?"
 				+")";
 
 		//预编译sql语句
@@ -41,6 +43,8 @@ public class DBService {
 			psmt.setString(5, song.getAlbumLink());
 			psmt.setString(6, song.getUrl());
 			psmt.setInt(7, song.getComment());
+			psmt.setTimestamp(8, new Timestamp(System.currentTimeMillis())); 
+			psmt.setDate(9, new Date(new java.util.Date().getTime()));
 
 			//执行SQL语句
 			psmt.execute();

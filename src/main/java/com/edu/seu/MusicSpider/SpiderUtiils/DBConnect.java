@@ -12,9 +12,9 @@ import java.sql.SQLException;
 
 public class DBConnect {
     
-    private static final String URL="jdbc:mysql://localhost:3306/MusicSpider";
-    private static final String NAME="music_spider";
-    private static final String PASSWORD="admin";
+    private static final String URL="jdbc:mysql://localhost:3306/musicspider";
+    private static final String NAME="root";
+    private static final String PASSWORD="413289";
     
     private static Connection conn=null;
 

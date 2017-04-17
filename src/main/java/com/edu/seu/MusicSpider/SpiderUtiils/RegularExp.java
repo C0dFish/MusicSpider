@@ -139,14 +139,20 @@ public Song findSongDetail(String response,String subURL,String name) {
 	Song song = new Song();
 	Document doc = Jsoup.parse(response);
 	Elements body = doc.getElementsByTag("p");
-	String singer = body.get(0).text().substring(3);
-	String album = body.get(1).text().substring(5);
-	String linkHref = body.get(1).getElementsByTag("a").attr("href");
-	song.setSinger(singer);
-	song.setAlbum(album);
-	song.setAlbumLink(GET_URL+linkHref);
-	song.setUrl(GET_URL+subURL.substring(1));
-	song.setName(name);
+	try {
+		String singer = body.get(0).text().substring(3);
+		String album = body.get(1).text().substring(5);
+		String linkHref = body.get(1).getElementsByTag("a").attr("href");
+		song.setSinger(singer);
+		song.setAlbum(album);
+		song.setAlbumLink(GET_URL+linkHref);
+		song.setUrl(GET_URL+subURL.substring(1));
+		song.setName(name);
+	} catch (Exception e) {
+		System.out.println("网页数据节点错误，已记录日志");
+	}
+
+	
 	return song;
 	
 }
