@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="MusicSpider"
+  id="myeclipse.1492523674372"
+  context-root="/MusicSpider"
+  j2ee-spec="5.0"
+  archive="MusicSpider.war">
+  <attributes>
+    <attribute name="webrootdir" value="&lt;prjroot&gt;" />
+  </attributes>
+</project-module>
+

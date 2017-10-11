@@ -24,8 +24,8 @@ public class DBService {
 	Connection con=DBConnect.getConnection();
 
 	//插入一条数据到数据库
-	public void addData(Song song){
-		String sql="insert into song_info_copy_copy"
+	public void addGoddess(Song song){
+		String sql="insert into song_info_copy"
 				+"(name,singer,lyric,album,albumLink,url,comment,add_time,update_time) "
 				+"values("
 				+" ?,?,?,?,?,?,?,?,?"
