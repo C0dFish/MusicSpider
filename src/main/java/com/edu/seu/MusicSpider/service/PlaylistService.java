@@ -38,9 +38,9 @@ public String GetFirstPage(){
           conn.setRequestMethod("GET");
           conn.setDoInput(true);
           //设置读超时时间
-          conn.setReadTimeout(20000);
+          conn.setReadTimeout(200000);
           //设置连接超时时间
-          conn.setConnectTimeout(20000);
+          conn.setConnectTimeout(200000);
           conn.connect();
           statusCode = conn.getResponseCode();
           if (200 == statusCode) {
@@ -52,7 +52,7 @@ public String GetFirstPage(){
 		}else {
 			System.out.println("nio");
 			LOGGER.error("请求首页错误，"+"错误类型：  "+statusCode);
-			LogErrors.loggerErrors(GET_URL, statusCode);
+			LogErrors.loggerErrors(GET_URL);
 		}          
       } catch (MalformedURLException e) {
           e.printStackTrace();

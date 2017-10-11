@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class
+        name="com.edu.seu.MusicSpider.service.SongResolveThreadService"
+        x="585" y="279">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.edu.seu.MusicSpider.service.PlaylistService"
+            endpointName="playlistService" kind="Simple"/>
+        <Association
+            destinationClassName="com.edu.seu.MusicSpider.service.DBService"
+            endpointName="dbService" kind="Simple"/>
+        <Communication destinationClassName="com.edu.seu.MusicSpider.service.PlaylistService"/>
+        <Communication destinationClassName="com.edu.seu.MusicSpider.service.DBService"/>
+    </Class>
+    <Class name="com.edu.seu.MusicSpider.service.PlaylistService"
+        x="123" y="41">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.edu.seu.MusicSpider.service.PlayListThreadService"
+        x="839" y="-12">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.edu.seu.MusicSpider.service.PlaylistService"
+            endpointName="playlistService" kind="Simple"/>
+        <Communication destinationClassName="com.edu.seu.MusicSpider.service.PlaylistService"/>
+    </Class>
+    <Class name="com.edu.seu.MusicSpider.service.AppService" x="46" y="275">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="com.edu.seu.MusicSpider.service.PlaylistService"/>
+    </Class>
+    <Class name="com.edu.seu.MusicSpider.service.DBService" x="183" y="391">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="true"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="true"
+            accessors-accepted="true" constructors-accepted="true"/>
+    </Class>
+</ClassDiagram>

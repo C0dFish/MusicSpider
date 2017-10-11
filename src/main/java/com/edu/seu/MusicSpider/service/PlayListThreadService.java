@@ -19,7 +19,7 @@ import com.edu.seu.MusicSpider.SpiderUtiils.RegularExp;
  * @version 1.0
  * @comment 
  */
-public class PlayListThread extends Thread{
+public class PlayListThreadService extends Thread{
 	
 	public String linkHref = null;
 	public String name = null;
@@ -42,7 +42,7 @@ public class PlayListThread extends Thread{
     RegularExp regularExp = new RegularExp();
     ExecutorService pool = Executors.newCachedThreadPool();
 	
-	public PlayListThread(String playlistName,String href){
+	public PlayListThreadService(String playlistName,String href){
 		linkHref = href;
 		name = playlistName;
 	}
@@ -61,7 +61,7 @@ public class PlayListThread extends Thread{
 			Map.Entry entry = (Entry) iterator.next();
 			String key = entry.getKey().toString();
 			String value = entry.getValue().toString();
-			Thread songThread = new SongResolveThread(key,value);
+			Thread songThread = new SongResolveThreadService(key,value);
 			pool.execute(songThread);			
 		}
 	}

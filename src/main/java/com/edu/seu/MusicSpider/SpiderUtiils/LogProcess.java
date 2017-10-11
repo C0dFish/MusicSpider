@@ -15,6 +15,7 @@ import java.io.IOException;
  */
 public class LogProcess {
 	static File file = new File("D:\\logs\\爬虫执行日志.txt");
+	static File file1 = new File("D:\\logs\\请求错误日志.txt");
 	
 	/**
 	 * @param log  日志记录
@@ -23,6 +24,21 @@ public class LogProcess {
 		try {
 			FileWriter fileWriter = new FileWriter(file,true);
 			fileWriter.write(log+"\r\n"+"\r\n\r\n\r\n\r\n"+"-----------------------------");
+			fileWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+
+	/**
+	 * @param URL 错误请求链接
+	 * @param statusCode 错误请求码
+	 */
+	public static void loggerErrors(String URL) {
+		try {
+			FileWriter fileWriter = new FileWriter(file1);
+			fileWriter.append("请求网页错误，错误网页地址："+URL.toString()+"\r\n");
 			fileWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();

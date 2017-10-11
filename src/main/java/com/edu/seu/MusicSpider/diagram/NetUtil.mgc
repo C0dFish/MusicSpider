@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="com.edu.seu.MusicSpider.SpiderUtiils.DBConnect" x="452" y="177">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="true"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="true"
+            accessors-accepted="true" constructors-accepted="true"/>
+    </Class>
+    <Class name="com.edu.seu.MusicSpider.SpiderUtiils.EncryptTools"
+        x="21" y="139">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="true"
+            accessors-accepted="true" constructors-accepted="true"/>
+    </Class>
+    <Class name="com.edu.seu.MusicSpider.SpiderUtiils.LogErrors" x="122" y="379">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.edu.seu.MusicSpider.SpiderUtiils.ErrorRetry"
+        x="221" y="57">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.edu.seu.MusicSpider.SpiderUtiils.LogErrors"
+            endpointName="logErrors" kind="Simple"/>
+        <Communication destinationClassName="com.edu.seu.MusicSpider.SpiderUtiils.LogErrors"/>
+        <Communication destinationClassName="com.edu.seu.MusicSpider.SpiderUtiils.SpiderApi"/>
+        <Communication destinationClassName="com.edu.seu.MusicSpider.SpiderUtiils.LogProcess"/>
+        <Communication destinationClassName="com.edu.seu.MusicSpider.SpiderUtiils.RegularExp"/>
+    </Class>
+    <Class name="com.edu.seu.MusicSpider.SpiderUtiils.RestClient"
+        x="790" y="455">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.edu.seu.MusicSpider.SpiderUtiils.NetUtil" x="1154" y="183">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="true"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="true"
+            accessors-accepted="true" constructors-accepted="true"/>
+    </Class>
+    <Class name="com.edu.seu.MusicSpider.SpiderUtiils.SpiderApi" x="241" y="475">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="com.edu.seu.MusicSpider.SpiderUtiils.NetUtil"/>
+        <Communication destinationClassName="com.edu.seu.MusicSpider.SpiderUtiils.RegularExp"/>
+    </Class>
+    <Class name="com.edu.seu.MusicSpider.SpiderUtiils.LogProcess"
+        x="677" y="51">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="true"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="true"
+            accessors-accepted="true" constructors-accepted="true"/>
+    </Class>
+    <Class name="com.edu.seu.MusicSpider.SpiderUtiils.RegularExp"
+        x="736" y="199">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.edu.seu.MusicSpider.SpiderUtiils.SpiderApi"
+            endpointName="spiderApi" kind="Simple"/>
+        <Communication destinationClassName="com.edu.seu.MusicSpider.SpiderUtiils.ErrorRetry"/>
+        <Communication destinationClassName="com.edu.seu.MusicSpider.SpiderUtiils.SpiderApi"/>
+    </Class>
+</ClassDiagram>

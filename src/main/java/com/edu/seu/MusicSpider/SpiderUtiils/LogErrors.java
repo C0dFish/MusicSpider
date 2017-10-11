@@ -18,10 +18,10 @@ public class LogErrors {
 	 * @param URL 错误请求链接
 	 * @param statusCode 错误请求码
 	 */
-	public static void loggerErrors(String URL,int statusCode) {
+	public static void loggerErrors(String URL) {
 		try {
 			FileWriter fileWriter = new FileWriter(file);
-			fileWriter.append("请求网页错误，错误码：  "+statusCode+"  请求网页地址："+URL.toString()+"\r\n");
+			fileWriter.append("请求网页错误，错误网页地址："+URL.toString()+"\r\n");
 			fileWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();
