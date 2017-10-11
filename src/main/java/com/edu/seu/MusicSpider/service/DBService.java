@@ -25,7 +25,7 @@ public class DBService {
 
 	//插入一条数据到数据库
 	public void addGoddess(Song song){
-		String sql="insert into song_info"
+		String sql="insert into song_info_copy"
 				+"(name,singer,lyric,album,albumLink,url,comment,add_time,update_time) "
 				+"values("
 				+" ?,?,?,?,?,?,?,?,?"
